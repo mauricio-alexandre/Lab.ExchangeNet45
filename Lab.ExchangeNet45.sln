@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.ExchangeNet45.Applicati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.ExchangeNet45.Application.Tests", "Application.Tests\Lab.ExchangeNet45.Application.Tests.csproj", "{068B6A7B-CF6B-42A6-9D3D-C3DA0A002A10}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.ExchangeNet45.WebApi", "WebApi\Lab.ExchangeNet45.WebApi.csproj", "{F6EDE54A-A9B7-46A5-86BE-B4AD2C046524}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{068B6A7B-CF6B-42A6-9D3D-C3DA0A002A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{068B6A7B-CF6B-42A6-9D3D-C3DA0A002A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{068B6A7B-CF6B-42A6-9D3D-C3DA0A002A10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6EDE54A-A9B7-46A5-86BE-B4AD2C046524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6EDE54A-A9B7-46A5-86BE-B4AD2C046524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6EDE54A-A9B7-46A5-86BE-B4AD2C046524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6EDE54A-A9B7-46A5-86BE-B4AD2C046524}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +42,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{68EBAEB8-73DD-4685-B91E-FF62DCF290C8} = {0001126F-4A55-4EFD-95DE-AA1954904731}
 		{068B6A7B-CF6B-42A6-9D3D-C3DA0A002A10} = {0001126F-4A55-4EFD-95DE-AA1954904731}
+		{F6EDE54A-A9B7-46A5-86BE-B4AD2C046524} = {0001126F-4A55-4EFD-95DE-AA1954904731}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {413B19DD-5EB4-4549-86D7-13A553676603}
