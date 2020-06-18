@@ -58,11 +58,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Persistence\NHibernateSqLiteTestFixture.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Lab.ExchangeNet45.Application.csproj">
+      <Project>{68ebaeb8-73dd-4685-b91e-ff62dcf290c8}</Project>
+      <Name>Lab.ExchangeNet45.Application</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
