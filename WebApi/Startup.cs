@@ -1,5 +1,9 @@
-﻿using System.Web.Http;
+﻿using System.Reflection;
+using System.Web.Http;
+using Lab.ExchangeNet45.Application.Bootstrapping;
+using Lab.ExchangeNet45.Contracts.Operacao.Commands;
 using Lab.ExchangeNet45.WebApi.Utils;
+using Lab.ExchangeNet45.WebApi.Utils.MediatorSimpleInjector;
 using Microsoft.Owin.Cors;
 using NLog.Owin.Logging;
 using Owin;
@@ -36,7 +40,14 @@ namespace Lab.ExchangeNet45.WebApi
 
             container.Options.DefaultScopedLifestyle = new AsyncScopedLifestyle();
 
-            // register application here
+            container.RegisterMediatR(new[]
+            {
+                typeof(Startup).GetTypeInfo().Assembly, // current assembly
+                typeof(AddOperacaoCommand).GetTypeInfo().Assembly, // contracts assembly
+                typeof(ExchangeApplicationSimpleInjectorExtensions).GetTypeInfo().Assembly // application assembly
+            });
+
+            container.RegisterExchangeApplication();
 
             container.RegisterWebApiControllers(config);
 
