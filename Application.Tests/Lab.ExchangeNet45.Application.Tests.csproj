@@ -61,6 +61,8 @@
     <Compile Include="Persistence\NHibernateSqLiteTestFixture.cs" />
     <Compile Include="Persistence\OperacaoRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\ObjectExtensions.cs" />
+    <Compile Include="Utils\TypeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -72,6 +74,7 @@
       <Name>Lab.ExchangeNet45.Application</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
