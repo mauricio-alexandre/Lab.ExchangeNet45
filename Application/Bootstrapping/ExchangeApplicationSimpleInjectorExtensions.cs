@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Reflection;
 using Lab.ExchangeNet45.Application.Shared;
+using MediatR;
 using NHibernate;
 using SimpleInjector;
 
@@ -19,7 +20,9 @@ namespace Lab.ExchangeNet45.Application.Bootstrapping
             // Repositories
             container.RegisterRepositories(applicationAssembly);
 
-            // TODO - registrar pipeline behavior de log aqui...
+            // Adds pipeline behaviors to MediatR
+            container.Collection.Append(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehavior<,>));
+            container.Collection.Append(typeof(IPipelineBehavior<,>), typeof(TransactionPipelineBehavior<,>));
         }
 
         private static void RegisterRepositories(this Container container, Assembly assembly)

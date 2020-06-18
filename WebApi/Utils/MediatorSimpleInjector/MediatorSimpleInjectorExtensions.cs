@@ -56,20 +56,20 @@ namespace Lab.ExchangeNet45.WebApi.Utils.MediatorSimpleInjector
                 typeof(GenericPipelineBehavior<,>)
             };
 
-            IEnumerable<Type> allOtherPipelineTypes = assemblies
-                .Select(assembly => assembly.GetTypes())
-                .SelectMany(types => types)
-                .Where(type => type.IsClass && type.IsGenericTypeDefinition && !type.IsAbstract && !type.IsInterface)
-                .Where(type => !defaultPipelineTypes.Contains(type.GetGenericTypeDefinition()))
-                .Where
-                (
-                    type => type
-                        .GetInterfaces()
-                        .Where(interfaceType => interfaceType.IsGenericType)
-                        .Any(interfaceType => interfaceType.GetGenericTypeDefinition() == typeof(IPipelineBehavior<,>))
-                );
+            //IEnumerable<Type> allOtherPipelineTypes = assemblies
+            //    .Select(assembly => assembly.GetTypes())
+            //    .SelectMany(types => types)
+            //    .Where(type => type.IsClass && type.IsGenericTypeDefinition && !type.IsAbstract && !type.IsInterface)
+            //    .Where(type => !defaultPipelineTypes.Contains(type.GetGenericTypeDefinition()))
+            //    .Where
+            //    (
+            //        type => type
+            //            .GetInterfaces()
+            //            .Where(interfaceType => interfaceType.IsGenericType)
+            //            .Any(interfaceType => interfaceType.GetGenericTypeDefinition() == typeof(IPipelineBehavior<,>))
+            //    );
 
-            container.Collection.Register(typeof(IPipelineBehavior<,>), defaultPipelineTypes.Concat(allOtherPipelineTypes));
+            container.Collection.Register(typeof(IPipelineBehavior<,>), defaultPipelineTypes/*.Concat(allOtherPipelineTypes)*/);
             container.Collection.Register(typeof(IRequestPreProcessor<>), new[] { typeof(GenericRequestPreProcessor<>) });
             container.Collection.Register(typeof(IRequestPostProcessor<,>), new[] { typeof(GenericRequestPostProcessor<,>) });
         }

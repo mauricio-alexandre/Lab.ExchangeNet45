@@ -74,7 +74,9 @@
     <Compile Include="Operacao\CommandSide\Persistence\OperacaoMap.cs" />
     <Compile Include="Operacao\CommandSide\Persistence\OperacaoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Shared\LoggingPipelineBehavior.cs" />
     <Compile Include="Shared\NHibernateSessionFactoryFactory.cs" />
+    <Compile Include="Shared\TransactionPipelineBehavior.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
