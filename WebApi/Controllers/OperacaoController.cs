@@ -26,6 +26,15 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
             return Ok(operacoes);
         }
 
+        [HttpGet, Route("grouping")]
+        public async Task<IHttpActionResult> GroupByStandard()
+        {
+            IEnumerable<OperacaoStandardGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByStandardQuery());
+
+            return Ok(grouping);
+        }
+
+
         [HttpPost, Route]
         public async Task<IHttpActionResult> Post([FromBody] AddOperacaoCommand command, CancellationToken cancellationToken)
         {

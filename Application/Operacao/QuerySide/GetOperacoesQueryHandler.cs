@@ -26,13 +26,13 @@ namespace Lab.ExchangeNet45.Application.Operacao.QuerySide
 
             return Projections
                 .ProjectionList()
-                .Add(Projections.Group<Operacao>(operacao => operacao.Id).WithAlias(() => queryModel.Id))
-                .Add(Projections.Group<Operacao>(operacao => operacao.Data).WithAlias(() => queryModel.Data))
-                .Add(Projections.Group<Operacao>(operacao => operacao.Tipo.Value).WithAlias(() => queryModel.TipoOperacao))
-                .Add(Projections.Group<Operacao>(operacao => operacao.Ativo).WithAlias(() => queryModel.Ativo))
-                .Add(Projections.Group<Operacao>(operacao => operacao.Quantidade).WithAlias(() => queryModel.Quantidade))
-                .Add(Projections.Group<Operacao>(operacao => operacao.Preco).WithAlias(() => queryModel.Preco))
-                .Add(Projections.Group<Operacao>(operacao => operacao.Conta).WithAlias(() => queryModel.Conta))
+                .Add(Projections.Property<Operacao>(operacao => operacao.Id).WithAlias(() => queryModel.Id))
+                .Add(Projections.Property<Operacao>(operacao => operacao.Data).WithAlias(() => queryModel.Data))
+                .Add(Projections.Property<Operacao>(operacao => operacao.Tipo.Value).WithAlias(() => queryModel.TipoOperacao))
+                .Add(Projections.Property<Operacao>(operacao => operacao.Ativo).WithAlias(() => queryModel.Ativo))
+                .Add(Projections.Property<Operacao>(operacao => operacao.Quantidade).WithAlias(() => queryModel.Quantidade))
+                .Add(Projections.Property<Operacao>(operacao => operacao.Preco).WithAlias(() => queryModel.Preco))
+                .Add(Projections.Property<Operacao>(operacao => operacao.Conta).WithAlias(() => queryModel.Conta))
                 ;
         }
 
