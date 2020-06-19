@@ -2,6 +2,7 @@
 using System.IO;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
+using HibernatingRhinos.Profiler.Appender.NHibernate;
 using NHibernate;
 using NHibernate.Connection;
 using NHibernate.Context;
@@ -13,12 +14,12 @@ namespace Lab.ExchangeNet45.Application.Shared
 {
     public class NHibernateSessionFactoryFactory
     {
-//        public NHibernateSessionFactoryFactory()
-//        {
-//#if DEBUG
-//            NHibernateProfiler.Initialize();
-//#endif
-//        }
+        public NHibernateSessionFactoryFactory()
+        {
+#if DEBUG
+            NHibernateProfiler.Initialize();
+#endif
+        }
 
         private static FluentConfiguration CreateConfiguration()
         {

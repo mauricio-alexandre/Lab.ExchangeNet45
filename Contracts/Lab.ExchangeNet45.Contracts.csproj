@@ -43,10 +43,15 @@
   <ItemGroup>
     <Compile Include="Operacao\Commands\AddOperacaoCommand.cs" />
     <Compile Include="Operacao\Commands\AddOperacoesBatchCommand.cs" />
+    <Compile Include="Operacao\Queries\GetOperacoesQuery.cs" />
+    <Compile Include="Operacao\Queries\GroupOperacoesByStandardQuery.cs" />
+    <Compile Include="Operacao\Queries\OperacaoStandardGroupingQueryModel.cs" />
+    <Compile Include="Operacao\Queries\OperacaoQueryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

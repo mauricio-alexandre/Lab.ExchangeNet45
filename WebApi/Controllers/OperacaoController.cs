@@ -1,7 +1,9 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Lab.ExchangeNet45.Contracts.Operacao.Commands;
+using Lab.ExchangeNet45.Contracts.Operacao.Queries;
 using MediatR;
 
 namespace Lab.ExchangeNet45.WebApi.Controllers
@@ -17,9 +19,11 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
         [HttpGet, Route]
-        public IHttpActionResult Get()
+        public async Task<IHttpActionResult> Get()
         {
-            return Ok(new { Test = "It's working" });
+            IEnumerable<OperacaoQueryModel> operacoes = await _mediator.Send(new GetOperacoesQuery());
+
+            return Ok(operacoes);
         }
 
         [HttpPost, Route]

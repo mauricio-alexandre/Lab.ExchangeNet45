@@ -25,7 +25,7 @@ namespace Lab.ExchangeNet45.WebApi.Utils.OwinMiddlewares
 
             TimeSpan time = stopwatch.Elapsed;
 
-            Logger.Info($@"Request ""{context.Request?.Path}"" time elapsed: {(int)time.TotalHours:00}:{time.Minutes:00}:{time.Seconds:00}.{time.Milliseconds}");
+            Logger.Info($@"Request ""{context.Request?.Method} {context.Request?.Path}"" time elapsed: {(int)time.TotalHours:00}:{time.Minutes:00}:{time.Seconds:00}.{time.Milliseconds}");
         }
     }
 }

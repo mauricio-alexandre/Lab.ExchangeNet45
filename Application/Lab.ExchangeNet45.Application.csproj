@@ -74,6 +74,7 @@
     <Compile Include="Operacao\CommandSide\DomainModels\OperacaoTipo.cs" />
     <Compile Include="Operacao\CommandSide\Persistence\OperacaoMap.cs" />
     <Compile Include="Operacao\CommandSide\Persistence\OperacaoRepository.cs" />
+    <Compile Include="Operacao\QuerySide\GetOperacoesQueryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\LoggingPipelineBehavior.cs" />
     <Compile Include="Shared\NHibernateSessionFactoryFactory.cs" />
