@@ -19,17 +19,25 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
         [HttpGet, Route]
-        public async Task<IHttpActionResult> Get()
+        public async Task<IHttpActionResult> Get(CancellationToken cancellationToken)
         {
-            IEnumerable<OperacaoQueryModel> operacoes = await _mediator.Send(new GetOperacoesQuery());
+            IEnumerable<OperacaoQueryModel> operacoes = await _mediator.Send(new GetOperacoesQuery(), cancellationToken);
 
             return Ok(operacoes);
         }
 
         [HttpGet, Route("grouping")]
-        public async Task<IHttpActionResult> GroupByStandard()
+        public async Task<IHttpActionResult> GroupByStandard(CancellationToken cancellationToken)
         {
-            IEnumerable<OperacaoStandardGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByStandardQuery());
+            IEnumerable<OperacaoStandardGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByStandardQuery(), cancellationToken);
+
+            return Ok(grouping);
+        }
+
+        [HttpGet, Route("grouping/ativo")]
+        public async Task<IHttpActionResult> GroupByAtivo(CancellationToken cancellationToken)
+        {
+            IEnumerable<OperacaoAtivoGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByAtivoQuery(), cancellationToken);
 
             return Ok(grouping);
         }

@@ -75,6 +75,7 @@
     <Compile Include="Operacao\CommandSide\Persistence\OperacaoMap.cs" />
     <Compile Include="Operacao\CommandSide\Persistence\OperacaoRepository.cs" />
     <Compile Include="Operacao\QuerySide\GetOperacoesQueryHandler.cs" />
+    <Compile Include="Operacao\QuerySide\GroupOperacoesByAtivoQueryHandler.cs" />
     <Compile Include="Operacao\QuerySide\GroupOperacoesByStandardQueryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shared\LoggingPipelineBehavior.cs" />
