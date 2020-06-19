@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.ExchangeNet45.WebApi", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.ExchangeNet45.Contracts", "Contracts\Lab.ExchangeNet45.Contracts.csproj", "{BC6AA6DE-13A3-45C4-B855-E68DDABE8062}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.ExchangeNet45.OperacaoLoader", "OperacaoLoader\Lab.ExchangeNet45.OperacaoLoader.csproj", "{5788B556-31E3-42AB-ACAA-F5186CBDAB98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{BC6AA6DE-13A3-45C4-B855-E68DDABE8062}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC6AA6DE-13A3-45C4-B855-E68DDABE8062}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC6AA6DE-13A3-45C4-B855-E68DDABE8062}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5788B556-31E3-42AB-ACAA-F5186CBDAB98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5788B556-31E3-42AB-ACAA-F5186CBDAB98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5788B556-31E3-42AB-ACAA-F5186CBDAB98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5788B556-31E3-42AB-ACAA-F5186CBDAB98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
