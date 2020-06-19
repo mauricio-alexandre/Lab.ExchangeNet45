@@ -31,5 +31,15 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
 
             return Ok();
         }
+
+        [HttpPost, Route("batch")]
+        public async Task<IHttpActionResult> PostBatch([FromBody] AddOperacoesBatchCommand commands, CancellationToken cancellationToken)
+        {
+            if (!ModelState.IsValid) return BadRequest(ModelState);
+
+            await _mediator.Send(commands, cancellationToken);
+
+            return Ok();
+        }
     }
 }

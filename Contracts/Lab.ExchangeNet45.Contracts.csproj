@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Operacao\Commands\AddOperacaoCommand.cs" />
+    <Compile Include="Operacao\Commands\AddOperacoesBatchCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

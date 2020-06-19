@@ -128,11 +128,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Utils\ExceptionHandlings\NLogExceptionLogger.cs" />
-    <Compile Include="Utils\HttpConfigurationFactory.cs" />
+    <Compile Include="HttpConfigurationFactory.cs" />
     <Compile Include="Utils\MediatorSimpleInjector\GenericPipelineBehavior.cs" />
     <Compile Include="Utils\MediatorSimpleInjector\GenericRequestPostProcessor.cs" />
     <Compile Include="Utils\MediatorSimpleInjector\GenericRequestPreProcessor.cs" />
     <Compile Include="Utils\MediatorSimpleInjector\MediatorSimpleInjectorExtensions.cs" />
+    <Compile Include="Utils\OwinMiddlewares\NLogStopwatchLoggingAppBuilderExtensions.cs" />
+    <Compile Include="Utils\OwinMiddlewares\NLogStopwatchLoggingMiddleware.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -153,6 +155,7 @@
       <Name>Lab.ExchangeNet45.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

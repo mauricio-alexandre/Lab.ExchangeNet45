@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="Bootstrapping\ExchangeApplicationSimpleInjectorExtensions.cs" />
     <Compile Include="Operacao\CommandSide\CommandHandlers\AddOperacaoCommandHandler.cs" />
+    <Compile Include="Operacao\CommandSide\CommandHandlers\AddOperacoesBatchCommandHandler.cs" />
     <Compile Include="Operacao\CommandSide\DomainModels\IOperacaoRepository.cs" />
     <Compile Include="Operacao\CommandSide\DomainModels\Operacao.cs" />
     <Compile Include="Operacao\CommandSide\DomainModels\OperacaoTipo.cs" />

@@ -2,8 +2,8 @@
 using System.Web.Http;
 using Lab.ExchangeNet45.Application.Bootstrapping;
 using Lab.ExchangeNet45.Contracts.Operacao.Commands;
-using Lab.ExchangeNet45.WebApi.Utils;
 using Lab.ExchangeNet45.WebApi.Utils.MediatorSimpleInjector;
+using Lab.ExchangeNet45.WebApi.Utils.OwinMiddlewares;
 using Microsoft.Owin.Cors;
 using NLog.Owin.Logging;
 using Owin;
@@ -19,7 +19,7 @@ namespace Lab.ExchangeNet45.WebApi
         {
             HttpConfiguration config = new HttpConfigurationFactory().Create();
 
-            app.UseNLog();
+            app.UseNLog().UseNLogStopwatchLogging();
 
             app.UseSimpleInjector(config);
 

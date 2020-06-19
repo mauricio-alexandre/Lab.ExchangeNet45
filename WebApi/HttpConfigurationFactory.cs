@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.Application;
 
-namespace Lab.ExchangeNet45.WebApi.Utils
+namespace Lab.ExchangeNet45.WebApi
 {
     public class HttpConfigurationFactory
     {
