@@ -76,6 +76,7 @@
     <Compile Include="Operacao\CommandSide\Persistence\OperacaoRepository.cs" />
     <Compile Include="Operacao\QuerySide\GetOperacoesQueryHandler.cs" />
     <Compile Include="Operacao\QuerySide\GroupOperacoesByAtivoQueryHandler.cs" />
+    <Compile Include="Operacao\QuerySide\GroupOperacoesByContaQueryHandler.cs" />
     <Compile Include="Operacao\QuerySide\GroupOperacoesByStandardQueryHandler.cs" />
     <Compile Include="Operacao\QuerySide\GroupOperacoesByTipoQueryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

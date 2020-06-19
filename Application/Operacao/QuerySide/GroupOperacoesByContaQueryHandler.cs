@@ -12,19 +12,19 @@ namespace Lab.ExchangeNet45.Application.Operacao.QuerySide
 {
     using Operacao = CommandSide.DomainModels.Operacao;
 
-    public class GroupOperacoesByTipoQueryHandler : 
-        IRequestHandler<GroupOperacoesByTipoQuery, IEnumerable<OperacaoTipoGroupingQueryModel>>
+    public class GroupOperacoesByContaQueryHandler : 
+        IRequestHandler<GroupOperacoesByContaQuery, IEnumerable<OperacaoContaGroupingQueryModel>>
     {
         private readonly ISession _session;
 
-        public GroupOperacoesByTipoQueryHandler(ISession session)
+        public GroupOperacoesByContaQueryHandler(ISession session)
         {
             _session = session;
         }
 
-        private static IProjection ProjectionOperacaoTipoGroupingQueryModel()
+        private static IProjection ProjectionOperacaoContaGroupingQueryModel()
         {
-            OperacaoTipoGroupingQueryModel queryModel = null;
+            OperacaoContaGroupingQueryModel queryModel = null;
 
             IProjection projectionQuantidade = Projections.Property<Operacao>(operacao => operacao.Quantidade);
 
@@ -50,19 +50,19 @@ namespace Lab.ExchangeNet45.Application.Operacao.QuerySide
 
             return Projections
                     .ProjectionList()
-                    .Add(Projections.Group<Operacao>(operacao => operacao.Tipo.Value).WithAlias(() => queryModel.TipoOperacao))
+                    .Add(Projections.Group<Operacao>(operacao => operacao.Conta).WithAlias(() => queryModel.Conta))
                     .Add(projectionSumOfQuantidade.WithAlias(() => queryModel.SomaDasQuantidades))
                     .Add(projectionPrecoMedio.WithAlias(() => queryModel.PrecoMedio))
                 ;
         }
 
-        public Task<IEnumerable<OperacaoTipoGroupingQueryModel>> Handle(GroupOperacoesByTipoQuery query, CancellationToken cancellationToken)
+        public Task<IEnumerable<OperacaoContaGroupingQueryModel>> Handle(GroupOperacoesByContaQuery query, CancellationToken cancellationToken)
         {
-            IEnumerable<OperacaoTipoGroupingQueryModel> operacoes = _session
+            IEnumerable<OperacaoContaGroupingQueryModel> operacoes = _session
                 .QueryOver<Operacao>()
-                .Select(ProjectionOperacaoTipoGroupingQueryModel())
-                .TransformUsing(Transformers.AliasToBean<OperacaoTipoGroupingQueryModel>())
-                .List<OperacaoTipoGroupingQueryModel>();
+                .Select(ProjectionOperacaoContaGroupingQueryModel())
+                .TransformUsing(Transformers.AliasToBean<OperacaoContaGroupingQueryModel>())
+                .List<OperacaoContaGroupingQueryModel>();
 
             return Task.FromResult(operacoes);
         }

@@ -36,7 +36,7 @@ namespace Lab.ExchangeNet45.Application.Operacao.QuerySide
                 ;
         }
 
-        public Task<IEnumerable<OperacaoQueryModel>> Handle(GetOperacoesQuery request, CancellationToken cancellationToken)
+        public Task<IEnumerable<OperacaoQueryModel>> Handle(GetOperacoesQuery query, CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoQueryModel> operacoes = _session
                 .QueryOver<Operacao>()

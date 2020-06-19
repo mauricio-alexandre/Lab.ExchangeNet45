@@ -50,6 +50,14 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
             return Ok(grouping);
         }
 
+        [HttpGet, Route("grouping/conta")]
+        public async Task<IHttpActionResult> GroupByConta(CancellationToken cancellationToken)
+        {
+            IEnumerable<OperacaoContaGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByContaQuery(), cancellationToken);
+
+            return Ok(grouping);
+        }
+
 
         [HttpPost, Route]
         public async Task<IHttpActionResult> Post([FromBody] AddOperacaoCommand command, CancellationToken cancellationToken)

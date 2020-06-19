@@ -58,7 +58,7 @@ namespace Lab.ExchangeNet45.Application.Operacao.QuerySide
                 ;
         }
 
-        public Task<IEnumerable<OperacaoStandardGroupingQueryModel>> Handle(GroupOperacoesByStandardQuery request, CancellationToken cancellationToken)
+        public Task<IEnumerable<OperacaoStandardGroupingQueryModel>> Handle(GroupOperacoesByStandardQuery query, CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoStandardGroupingQueryModel> operacoes = _session
                 .QueryOver<Operacao>()

@@ -56,7 +56,7 @@ namespace Lab.ExchangeNet45.Application.Operacao.QuerySide
                 ;
         }
 
-        public Task<IEnumerable<OperacaoAtivoGroupingQueryModel>> Handle(GroupOperacoesByAtivoQuery request, CancellationToken cancellationToken)
+        public Task<IEnumerable<OperacaoAtivoGroupingQueryModel>> Handle(GroupOperacoesByAtivoQuery query, CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoAtivoGroupingQueryModel> operacoes = _session
                 .QueryOver<Operacao>()
