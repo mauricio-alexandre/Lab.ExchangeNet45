@@ -5,6 +5,7 @@ using System.Web.Http;
 using Lab.ExchangeNet45.Contracts.Operacao.Commands;
 using Lab.ExchangeNet45.Contracts.Operacao.Queries;
 using MediatR;
+using WebApi.OutputCache.V2;
 
 namespace Lab.ExchangeNet45.WebApi.Controllers
 {
@@ -19,13 +20,15 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
         [HttpGet, Route]
+        [CacheOutput(ServerTimeSpan = 300)]
         public async Task<IHttpActionResult> Get(CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoQueryModel> operacoes = await _mediator.Send(new GetOperacoesQuery(), cancellationToken);
-
+            
             return Ok(operacoes);
         }
 
+        [CacheOutput(ServerTimeSpan = 300)]
         [HttpGet, Route("grouping")]
         public async Task<IHttpActionResult> GroupByStandard(CancellationToken cancellationToken)
         {
@@ -34,6 +37,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
             return Ok(grouping);
         }
 
+        [CacheOutput(ServerTimeSpan = 300)]
         [HttpGet, Route("grouping/ativo")]
         public async Task<IHttpActionResult> GroupByAtivo(CancellationToken cancellationToken)
         {
@@ -42,6 +46,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
             return Ok(grouping);
         }
 
+        [CacheOutput(ServerTimeSpan = 300)]
         [HttpGet, Route("grouping/tipo")]
         public async Task<IHttpActionResult> GroupByTipo(CancellationToken cancellationToken)
         {
@@ -50,6 +55,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
             return Ok(grouping);
         }
 
+        [CacheOutput(ServerTimeSpan = 300)]
         [HttpGet, Route("grouping/conta")]
         public async Task<IHttpActionResult> GroupByConta(CancellationToken cancellationToken)
         {
