@@ -1,6 +1,7 @@
 ﻿using System.Web.Http;
 using System.Web.Http.ExceptionHandling;
 using Lab.ExchangeNet45.WebApi.Utils.ExceptionHandlings;
+using Lab.ExchangeNet45.WebApi.Utils.SwaggerFilters;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Swashbuckle.Application;
@@ -22,7 +23,12 @@ namespace Lab.ExchangeNet45.WebApi
             config.Services.Add(typeof(IExceptionLogger), new NLogExceptionLogger());
 
             config
-                .EnableSwagger(docs => { docs.SingleApiVersion("v1", "Lab.ExchangeNet45.WebApi"); })
+                .EnableSwagger(docs =>
+                {
+                    docs.OperationFilter<SwaggerConsumesFilter>();
+                    docs.OperationFilter<SwaggerProducesFilter>();
+                    docs.SingleApiVersion("v1", "Lab.ExchangeNet45.WebApi");
+                })
                 .EnableSwaggerUi(ui => { ui.DocExpansion(DocExpansion.List); });
 
             config.Routes.MapHttpRoute(
