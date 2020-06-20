@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.ExchangeNet45.Contracts
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.ExchangeNet45.OperacaoLoader", "OperacaoLoader\Lab.ExchangeNet45.OperacaoLoader.csproj", "{5788B556-31E3-42AB-ACAA-F5186CBDAB98}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lab.ExchangeNet45.DesktopApp", "DesktopApp\Lab.ExchangeNet45.DesktopApp.csproj", "{EBC371B8-515A-4923-94E7-5AD1E4586E62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{5788B556-31E3-42AB-ACAA-F5186CBDAB98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5788B556-31E3-42AB-ACAA-F5186CBDAB98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5788B556-31E3-42AB-ACAA-F5186CBDAB98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBC371B8-515A-4923-94E7-5AD1E4586E62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBC371B8-515A-4923-94E7-5AD1E4586E62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBC371B8-515A-4923-94E7-5AD1E4586E62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBC371B8-515A-4923-94E7-5AD1E4586E62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
