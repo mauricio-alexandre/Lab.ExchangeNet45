@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Lab.ExchangeNet45.DesktopApp.OperacaoTodasControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding OperacaoTodas, Source={StaticResource Locator}}">
+    <Grid>
+        <StackPanel CanVerticallyScroll="True">
+            <Button Margin="10" Content="Consultar Todas" Command="{Binding GetOperacoesCommand}"></Button>
+
+            <DataGrid Height="300" ItemsSource="{Binding Operacoes}" IsReadOnly="True" AutoGenerateColumns="False" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Id}" Header="Id" MinWidth="100" />
+                    <DataGridTextColumn Binding="{Binding Data}" Header="Data" MinWidth="100" />
+                    <DataGridTextColumn Binding="{Binding TipoOperacao}" Header="Tipo de Operação" MinWidth="100" />
+                    <DataGridTextColumn Binding="{Binding Ativo}" Header="Ativo" MinWidth="100" />
+                    <DataGridTextColumn Binding="{Binding Quantidade}" Header="Quantidade" MinWidth="100" />
+                    <DataGridTextColumn Binding="{Binding Preco}" Header="Preço" MinWidth="100" />
+                    <DataGridTextColumn Binding="{Binding Conta}" Header="Conta" MinWidth="100" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</UserControl>
