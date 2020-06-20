@@ -10,9 +10,10 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
         public MainViewModel()
         {
             Title = "Lab.ExchangeNet45.DesktopApp";
-            TabItems = new[]
+            TabItems = new INotifyPropertyChanged[]
             {
-                ServiceLocator.Current.GetInstance<OperacaoTodasViewModel>()
+                ServiceLocator.Current.GetInstance<OperacaoTodasViewModel>(),
+                ServiceLocator.Current.GetInstance<OperacaoAgrupamentoStandardViewModel>()
             };
         }
 

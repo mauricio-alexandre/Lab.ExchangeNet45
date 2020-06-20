@@ -16,6 +16,9 @@
                     <DataTemplate DataType="{x:Type vm:OperacaoTodasViewModel}">
                         <local:OperacaoTodasControl/>
                     </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:OperacaoAgrupamentoStandardViewModel}">
+                        <local:OperacaoAgrupamentoStandardControl/>
+                    </DataTemplate>
                 </TabControl.Resources>
             </TabControl>
         </StackPanel>

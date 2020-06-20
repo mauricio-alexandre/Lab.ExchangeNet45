@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="Lab.ExchangeNet45.DesktopApp.OperacaoAgrupamentoStandardControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding OperacaoAgrupamentoStandard, Source={StaticResource Locator}}">
+    <Grid>
+        <StackPanel CanVerticallyScroll="True">
+            <Button Margin="10" Content="Consultar Agrupadas por Ativo, Tipo de Operação e Conta" Command="{Binding GetOperacoesAgrupadasCommand}"></Button>
+
+            <DataGrid Height="300" ItemsSource="{Binding Operacoes}" IsReadOnly="True" AutoGenerateColumns="False" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding TipoOperacao}" Header="Tipo de Operação" MinWidth="100" />
+                    <DataGridTextColumn Binding="{Binding Ativo}" Header="Ativo" MinWidth="100" />
+                    <DataGridTextColumn Binding="{Binding Conta}" Header="Conta" MinWidth="100" />
+                    <DataGridTextColumn Binding="{Binding SomaDasQuantidades}" Header="Soma das Quantidades" MinWidth="100" />
+                    <DataGridTextColumn Binding="{Binding PrecoMedio}" Header="Preço Medio" MinWidth="100" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</UserControl>
