@@ -7,7 +7,7 @@
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding OperacaoAgrupamentoAtivo, Source={StaticResource Locator}}">
     <Grid>
-        <StackPanel CanVerticallyScroll="True">
+        <StackPanel Orientation="Vertical" CanVerticallyScroll="True">
             <StackPanel Orientation="Horizontal">
                 <Button Margin="10" Content="Consultar Agrupadas por Ativo" Command="{Binding GetOperacoesAgrupadasCommand}"></Button>
                 <Button Margin="10" Content="Download CSV" Command="{Binding DownloadOperacoesAgrupadasCsvCommand}"></Button>

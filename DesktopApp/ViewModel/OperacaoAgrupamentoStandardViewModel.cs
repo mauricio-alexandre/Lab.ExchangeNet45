@@ -88,7 +88,7 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
 
             if (dialog.ShowDialog() == true) File.WriteAllBytes(dialog.FileName, byteArrayContent);
 
-            _isDownloadingExcel = true;
+            _isDownloadingExcel = false;
         }
 
         private bool CanExecuteDownloadExcel() => !_isDownloadingExcel;
