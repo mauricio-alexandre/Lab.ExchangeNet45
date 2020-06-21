@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Net.Http;
 using System.Windows;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
@@ -51,7 +50,7 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
         {
             _isGettingOperacoes = true;
 
-            IEnumerable<OperacaoQueryModel> operacoes = await _exchangeService.Operacoes.Get();
+            IEnumerable<OperacaoQueryModel> operacoes = await _exchangeService.Operacoes.GetAsync();
 
             Operacoes = new ObservableCollection<OperacaoQueryModel>(operacoes);
 
@@ -67,7 +66,7 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
         {
             _isDownloadingCsv = true;
 
-            byte[] byteArrayContent = await _exchangeService.Operacoes.DownloadCsvFile();
+            byte[] byteArrayContent = await _exchangeService.Operacoes.DownloadAsCsvFileAsync();
 
             var dialog = new SaveFileDialog { Title = "Salvar Operações", Filter = "CSV Files (*.csv)|*.csv", DefaultExt = ".csv" };
 
@@ -83,7 +82,7 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
         {
             _isDownloadingExcel = true;
 
-            byte[] byteArrayContent = await _exchangeService.Operacoes.DownloadExcelFile();
+            byte[] byteArrayContent = await _exchangeService.Operacoes.DownloadAsExcelFileAsync();
 
             var dialog = new SaveFileDialog { Title = "Salvar Operações", Filter = "Excel Files (*.xlsx)|*.xlsx", DefaultExt = ".xlsx" };
 

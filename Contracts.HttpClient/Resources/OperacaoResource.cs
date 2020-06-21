@@ -17,25 +17,50 @@ namespace Lab.ExchangeNet45.Contracts.HttpClient.Resources
             _httpClient = httpClient;
         }
 
-        public Task<IEnumerable<OperacaoQueryModel>> Get(CancellationToken cancellationToken = default)
+        public Task<IEnumerable<OperacaoQueryModel>> GetAsync(CancellationToken cancellationToken = default)
         {
             var relativeUri = new Uri($"{RoutePrefix}", UriKind.Relative);
 
             return _httpClient.GetRequestResponseAsync<IEnumerable<OperacaoQueryModel>>(relativeUri, cancellationToken);
         }
 
-        public Task<byte[]> DownloadCsvFile(CancellationToken cancellationToken = default)
+        public Task<byte[]> DownloadAsCsvFileAsync(CancellationToken cancellationToken = default)
         {
             var relativeUri = new Uri($"{RoutePrefix}/csv-file", UriKind.Relative);
 
             return _httpClient.DownloadByteArray(relativeUri, cancellationToken);
         }
 
-        public Task<byte[]> DownloadExcelFile(CancellationToken cancellationToken = default)
+        public Task<byte[]> DownloadAsExcelFileAsync(CancellationToken cancellationToken = default)
         {
             var relativeUri = new Uri($"{RoutePrefix}/excel-file", UriKind.Relative);
 
             return _httpClient.DownloadByteArray(relativeUri, cancellationToken);
         }
+
+
+        public Task<IEnumerable<OperacaoStandardGroupingQueryModel>> GroupByStandardAsync(CancellationToken cancellationToken = default)
+        {
+            var relativeUri = new Uri($"{RoutePrefix}/grouping", UriKind.Relative);
+
+            return _httpClient.GetRequestResponseAsync<IEnumerable<OperacaoStandardGroupingQueryModel>>(relativeUri, cancellationToken);
+        }
+
+        public Task<byte[]> DownloadGroupingByStandardAsCsvFileAsync(CancellationToken cancellationToken = default)
+        {
+            var relativeUri = new Uri($"{RoutePrefix}/grouping/csv-file", UriKind.Relative);
+
+            return _httpClient.DownloadByteArray(relativeUri, cancellationToken);
+        }
+
+        public Task<byte[]> DownloadGroupingByStandardAsExcelFileAsync(CancellationToken cancellationToken = default)
+        {
+            var relativeUri = new Uri($"{RoutePrefix}/grouping/excel-file", UriKind.Relative);
+
+            return _httpClient.DownloadByteArray(relativeUri, cancellationToken);
+        }
+
+
+
     }
 }
