@@ -14,6 +14,9 @@
 
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
+using Lab.ExchangeNet45.Contracts.HttpClient;
+using Lab.ExchangeNet45.Contracts.HttpClient.Resources;
+using Lab.ExchangeNet45.DesktopApp.Integration;
 
 namespace Lab.ExchangeNet45.DesktopApp.ViewModel
 {
@@ -22,6 +25,10 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
         public ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+
+            SimpleIoc.Default.Register(() => new ExchangeHttpClientFactory().CreateFromAppSettings());
+            SimpleIoc.Default.Register<OperacaoResource>();
+            SimpleIoc.Default.Register<ExchangeService>();
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<OperacaoTodasViewModel>();

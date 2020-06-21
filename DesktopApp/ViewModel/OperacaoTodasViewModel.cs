@@ -6,23 +6,27 @@ using System.Windows;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
+using Lab.ExchangeNet45.Contracts.HttpClient;
 using Lab.ExchangeNet45.Contracts.Operacao.Queries;
 using Microsoft.Win32;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
 namespace Lab.ExchangeNet45.DesktopApp.ViewModel
 {
     public class OperacaoTodasViewModel : ViewModelBase
     {
+        private readonly ExchangeService _exchangeService;
+
         private bool _isGettingOperacoes;
         private bool _isDownloadingCsv;
         private bool _isDownloadingExcel;
         private ObservableCollection<OperacaoQueryModel> _operacoes;
 
-        public OperacaoTodasViewModel()
+        public OperacaoTodasViewModel(ExchangeService exchangeService)
         {
+            _exchangeService = exchangeService;
+
             Title = "Todas";
+
             GetOperacoesCommand = new RelayCommand(ExecuteGetOperacoesCommand, CanExecuteGetOperacoesCommand);
             DownloadOperacoesCsvCommand = new RelayCommand(ExecuteDownloadCsv, CanExecuteDownloadCsv);
             DownloadOperacoesExcelCommand = new RelayCommand(ExecuteDownloadExcel, CanExecuteDownloadExcel);
@@ -47,20 +51,9 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
         {
             _isGettingOperacoes = true;
 
-            using (var httpClient = new HttpClient())
-            {
-                var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:44362/api/operacoes");
+            IEnumerable<OperacaoQueryModel> operacoes = await _exchangeService.Operacoes.Get();
 
-                HttpResponseMessage response = await httpClient.SendAsync(request);
-
-                string stringContent = await response.Content.ReadAsStringAsync();
-
-                var settings = new JsonSerializerSettings{ContractResolver = new CamelCasePropertyNamesContractResolver()};
-
-                var operacoes = JsonConvert.DeserializeObject<IEnumerable<OperacaoQueryModel>>(stringContent, settings);
-
-                Operacoes = new ObservableCollection<OperacaoQueryModel>(operacoes);
-            }
+            Operacoes = new ObservableCollection<OperacaoQueryModel>(operacoes);
 
             _isGettingOperacoes = false;
 
@@ -74,18 +67,11 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
         {
             _isDownloadingCsv = true;
 
-            using (var httpClient = new HttpClient())
-            {
-                var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:44362/api/operacoes/csv-file");
+            byte[] byteArrayContent = await _exchangeService.Operacoes.DownloadCsvFile();
 
-                HttpResponseMessage response = await httpClient.SendAsync(request);
+            var dialog = new SaveFileDialog { Title = "Salvar Operações", Filter = "CSV Files (*.csv)|*.csv", DefaultExt = ".csv" };
 
-                byte[] byteArrayContent = await response.Content.ReadAsByteArrayAsync();
-
-                var dialog = new SaveFileDialog { Title = "Salvar Operações", Filter = "CSV Files (*.csv)|*.csv", DefaultExt = ".csv" };
-                
-                if (dialog.ShowDialog() == true) File.WriteAllBytes(dialog.FileName, byteArrayContent);
-            }
+            if (dialog.ShowDialog() == true) File.WriteAllBytes(dialog.FileName, byteArrayContent);
 
             _isDownloadingCsv = false;
         }
@@ -97,18 +83,11 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
         {
             _isDownloadingExcel = true;
 
-            using (var httpClient = new HttpClient())
-            {
-                var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:44362/api/operacoes/excel-file");
+            byte[] byteArrayContent = await _exchangeService.Operacoes.DownloadExcelFile();
 
-                HttpResponseMessage response = await httpClient.SendAsync(request);
+            var dialog = new SaveFileDialog { Title = "Salvar Operações", Filter = "Excel Files (*.xlsx)|*.xlsx", DefaultExt = ".xlsx" };
 
-                byte[] byteArrayContent = await response.Content.ReadAsByteArrayAsync();
-
-                var dialog = new SaveFileDialog { Title = "Salvar Operações", Filter = "Excel Files (*.xlsx)|*.xlsx", DefaultExt = ".xlsx" };
-
-                if (dialog.ShowDialog() == true) File.WriteAllBytes(dialog.FileName, byteArrayContent);
-            }
+            if (dialog.ShowDialog() == true) File.WriteAllBytes(dialog.FileName, byteArrayContent);
 
             _isDownloadingExcel = true;
         }

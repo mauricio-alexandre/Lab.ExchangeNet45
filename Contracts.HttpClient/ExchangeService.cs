@@ -4,11 +4,11 @@ namespace Lab.ExchangeNet45.Contracts.HttpClient
 {
     public class ExchangeService
     {
-        public ExchangeService(OperacaoResource operacao)
+        public ExchangeService(OperacaoResource operacoes)
         {
-            Operacao = operacao;
+            Operacoes = operacoes;
         }
 
-        public OperacaoResource Operacao { get; }
+        public OperacaoResource Operacoes { get; }
     }
 }

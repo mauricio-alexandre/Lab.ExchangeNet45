@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -24,20 +25,33 @@ namespace Lab.ExchangeNet45.Contracts.HttpClient
             };
         }
 
-        public async Task<TResponse> GetRequestResponseAsync<TResponse>(Uri requestUri)
+        public async Task<TResponse> GetRequestResponseAsync<TResponse>(Uri requestUri, CancellationToken cancellationToken = default)
         {
             HttpRequestMessage getRequest = CreateGetRequest(requestUri);
 
-            HttpResponseMessage response = await SendAsync(getRequest);
+            HttpResponseMessage response = await SendAsync(getRequest, cancellationToken);
 
-            await AssertSuccessResponse(response);
+            await AssertSuccessResponseAsync(response);
 
             TResponse responseObject = await CreateObjectFromJsonContent<TResponse>(response.Content);
 
             return responseObject;
         }
 
-        private static async Task AssertSuccessResponse(HttpResponseMessage response)
+        public async Task<byte[]> DownloadByteArray(Uri requestUri, CancellationToken cancellationToken = default)
+        {
+            HttpRequestMessage getRequest = CreateGetRequest(requestUri);
+
+            HttpResponseMessage response = await SendAsync(getRequest, cancellationToken);
+
+            await AssertSuccessResponseAsync(response);
+
+            byte[] byteArrayContent = await response.Content.ReadAsByteArrayAsync();
+
+            return byteArrayContent;
+        }
+
+        private static async Task AssertSuccessResponseAsync(HttpResponseMessage response)
         {
             try
             {
