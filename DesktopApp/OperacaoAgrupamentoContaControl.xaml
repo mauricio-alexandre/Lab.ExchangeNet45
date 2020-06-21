@@ -8,7 +8,11 @@
              DataContext="{Binding OperacaoAgrupamentoConta, Source={StaticResource Locator}}">
     <Grid>
         <StackPanel CanVerticallyScroll="True">
-            <Button Margin="10" Content="Consultar Agrupadas por Conta" Command="{Binding GetOperacoesAgrupadasCommand}"></Button>
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="10" Content="Consultar Agrupadas por Conta" Command="{Binding GetOperacoesAgrupadasCommand}"></Button>
+                <Button Margin="10" Content="Download CSV" Command="{Binding DownloadOperacoesAgrupadasCsvCommand}"></Button>
+                <Button Margin="10" Content="Download Excel" Command="{Binding DownloadOperacoesAgrupadasExcelCommand}"></Button>
+            </StackPanel>
 
             <DataGrid Height="300" ItemsSource="{Binding OperacoesAgrupadas}" IsReadOnly="True" AutoGenerateColumns="False" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                 <DataGrid.Columns>

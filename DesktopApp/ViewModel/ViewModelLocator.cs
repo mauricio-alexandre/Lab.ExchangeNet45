@@ -26,10 +26,12 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
+            // Integration
             SimpleIoc.Default.Register(() => new ExchangeHttpClientFactory().CreateFromAppSettings());
             SimpleIoc.Default.Register<OperacaoResource>();
             SimpleIoc.Default.Register<ExchangeService>();
 
+            // ViewModels
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<OperacaoTodasViewModel>();
             SimpleIoc.Default.Register<OperacaoAgrupamentoStandardViewModel>();
