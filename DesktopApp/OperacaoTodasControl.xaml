@@ -7,8 +7,12 @@
              d:DesignHeight="450" d:DesignWidth="800"
              DataContext="{Binding OperacaoTodas, Source={StaticResource Locator}}">
     <Grid>
-        <StackPanel CanVerticallyScroll="True">
-            <Button Margin="10" Content="Consultar Todas" Command="{Binding GetOperacoesCommand}"></Button>
+        <StackPanel Orientation="Vertical" CanVerticallyScroll="True">
+            <StackPanel Orientation="Horizontal">
+                <Button Margin="10" Content="Consultar Todas" Command="{Binding GetOperacoesCommand}"></Button>
+                <Button Margin="10" Content="Download CSV" Command="{Binding DownloadOperacoesCsvCommand}"></Button>
+                <Button Margin="10" Content="Download Excel" Command="{Binding DownloadOperacoesExcelCommand}"></Button>
+            </StackPanel>
 
             <DataGrid Height="300" ItemsSource="{Binding Operacoes}" IsReadOnly="True" AutoGenerateColumns="False" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                 <DataGrid.Columns>

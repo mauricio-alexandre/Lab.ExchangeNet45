@@ -12,10 +12,8 @@
   See http://www.galasoft.ch/mvvm
 */
 
-using System.Windows;
 using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
-using GalaSoft.MvvmLight.Messaging;
 
 namespace Lab.ExchangeNet45.DesktopApp.ViewModel
 {
@@ -31,8 +29,6 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
             SimpleIoc.Default.Register<OperacaoAgrupamentoAtivoViewModel>();
             SimpleIoc.Default.Register<OperacaoAgrupamentoTipoViewModel>();
             SimpleIoc.Default.Register<OperacaoAgrupamentoContaViewModel>();
-
-            Messenger.Default.Register<NotificationMessage>(this, NotifyUserMethod);
         }
 
         public MainViewModel Main => ServiceLocator.Current.GetInstance<MainViewModel>();
@@ -47,9 +43,5 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
 
         public OperacaoAgrupamentoContaViewModel OperacaoAgrupamentoConta => ServiceLocator.Current.GetInstance<OperacaoAgrupamentoContaViewModel>();
 
-        private static void NotifyUserMethod(NotificationMessage message)
-        {
-            MessageBox.Show(message.Notification);
-        }
     }
 }

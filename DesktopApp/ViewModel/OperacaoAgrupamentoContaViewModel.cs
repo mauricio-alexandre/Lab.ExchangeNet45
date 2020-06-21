@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Http;
+using System.Windows;
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
-using GalaSoft.MvvmLight.Messaging;
 using Lab.ExchangeNet45.Contracts.Operacao.Queries;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -53,7 +53,7 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
 
             _isGettingOperacoes = false;
 
-            Messenger.Default.Send(new NotificationMessage($"O agrupamento resultou em {OperacoesAgrupadas.Count} linhas."));
+            MessageBox.Show($"O agrupamento resultou em {OperacoesAgrupadas.Count} linhas.");
         }
 
         private bool CanExecuteGetOperacoesAgrupadasCommand() => !_isGettingOperacoes;

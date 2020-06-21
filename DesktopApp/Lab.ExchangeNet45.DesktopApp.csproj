@@ -81,6 +81,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Integration\ExchangeHttpClientFactory.cs" />
     <Compile Include="OperacaoAgrupamentoAtivoControl.xaml.cs">
       <DependentUpon>OperacaoAgrupamentoAtivoControl.xaml</DependentUpon>
     </Compile>
@@ -164,10 +165,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Contracts.HttpClient\Lab.ExchangeNet45.Contracts.HttpClient.csproj">
+      <Project>{de95e780-538e-4a12-85d9-f34eea6bb475}</Project>
+      <Name>Lab.ExchangeNet45.Contracts.HttpClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Contracts\Lab.ExchangeNet45.Contracts.csproj">
       <Project>{bc6aa6de-13a3-45c4-b855-e68ddabe8062}</Project>
       <Name>Lab.ExchangeNet45.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
