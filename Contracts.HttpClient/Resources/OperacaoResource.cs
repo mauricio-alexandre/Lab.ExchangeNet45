@@ -61,6 +61,70 @@ namespace Lab.ExchangeNet45.Contracts.HttpClient.Resources
         }
 
 
+        public Task<IEnumerable<OperacaoAtivoGroupingQueryModel>> GroupByAtivoAsync(CancellationToken cancellationToken = default)
+        {
+            var relativeUri = new Uri($"{RoutePrefix}/grouping/ativo", UriKind.Relative);
+
+            return _httpClient.GetRequestResponseAsync<IEnumerable<OperacaoAtivoGroupingQueryModel>>(relativeUri, cancellationToken);
+        }
+
+        public Task<byte[]> DownloadGroupingByAtivoAsCsvFileAsync(CancellationToken cancellationToken = default)
+        {
+            var relativeUri = new Uri($"{RoutePrefix}/grouping/ativo/csv-file", UriKind.Relative);
+
+            return _httpClient.DownloadByteArray(relativeUri, cancellationToken);
+        }
+
+        public Task<byte[]> DownloadGroupingByAtivoAsExcelFileAsync(CancellationToken cancellationToken = default)
+        {
+            var relativeUri = new Uri($"{RoutePrefix}/grouping/ativo/excel-file", UriKind.Relative);
+
+            return _httpClient.DownloadByteArray(relativeUri, cancellationToken);
+        }
+
+
+        public Task<IEnumerable<OperacaoTipoGroupingQueryModel>> GroupByTipoAsync(CancellationToken cancellationToken = default)
+        {
+            var relativeUri = new Uri($"{RoutePrefix}/grouping/tipo", UriKind.Relative);
+
+            return _httpClient.GetRequestResponseAsync<IEnumerable<OperacaoTipoGroupingQueryModel>>(relativeUri, cancellationToken);
+        }
+
+        public Task<byte[]> DownloadGroupingByTipoAsCsvFileAsync(CancellationToken cancellationToken = default)
+        {
+            var relativeUri = new Uri($"{RoutePrefix}/grouping/tipo/csv-file", UriKind.Relative);
+
+            return _httpClient.DownloadByteArray(relativeUri, cancellationToken);
+        }
+
+        public Task<byte[]> DownloadGroupingByTipoAsExcelFileAsync(CancellationToken cancellationToken = default)
+        {
+            var relativeUri = new Uri($"{RoutePrefix}/grouping/tipo/excel-file", UriKind.Relative);
+
+            return _httpClient.DownloadByteArray(relativeUri, cancellationToken);
+        }
+
+
+        public Task<IEnumerable<OperacaoContaGroupingQueryModel>> GroupByContaAsync(CancellationToken cancellationToken = default)
+        {
+            var relativeUri = new Uri($"{RoutePrefix}/grouping/conta", UriKind.Relative);
+
+            return _httpClient.GetRequestResponseAsync<IEnumerable<OperacaoContaGroupingQueryModel>>(relativeUri, cancellationToken);
+        }
+
+        public Task<byte[]> DownloadGroupingByContaAsCsvFileAsync(CancellationToken cancellationToken = default)
+        {
+            var relativeUri = new Uri($"{RoutePrefix}/grouping/conta/csv-file", UriKind.Relative);
+
+            return _httpClient.DownloadByteArray(relativeUri, cancellationToken);
+        }
+
+        public Task<byte[]> DownloadGroupingByContaAsExcelFileAsync(CancellationToken cancellationToken = default)
+        {
+            var relativeUri = new Uri($"{RoutePrefix}/grouping/conta/excel-file", UriKind.Relative);
+
+            return _httpClient.DownloadByteArray(relativeUri, cancellationToken);
+        }
 
     }
 }
