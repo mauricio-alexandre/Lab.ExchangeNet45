@@ -11,34 +11,34 @@ using Newtonsoft.Json.Serialization;
 
 namespace Lab.ExchangeNet45.DesktopApp.ViewModel
 {
-    public class OperacaoAgrupamentoStandardViewModel : ViewModelBase
+    public class OperacaoAgrupamentoAtivoViewModel : ViewModelBase
     {
         private bool _isGettingOperacoes;
-        private ObservableCollection<OperacaoStandardGroupingQueryModel> _operacoesAgrupadas;
+        private ObservableCollection<OperacaoAtivoGroupingQueryModel> _operacoesAgrupadas;
 
-        public OperacaoAgrupamentoStandardViewModel()
+        public OperacaoAgrupamentoAtivoViewModel()
         {
-            Title = "Agrupadas por Ativo, Tipo de Operação e Conta";
-            GetOperacoesAgrupadasCommand = new RelayCommand(ExecuteGetOperacoesAgrupadasCommand, CanExecuteGetOperacoesAgrupadasCommand);
+            Title = "Agrupadas por Ativo";
+            GetOperacoesAgrupadasCommand = new RelayCommand(ExecuteGetOperacoesCommand, CanExecuteGetOperacoesCommand);
         }
 
         public string Title { get; }
 
         public ICommand GetOperacoesAgrupadasCommand { get; }
 
-        public ObservableCollection<OperacaoStandardGroupingQueryModel> OperacoesAgrupadas
+        public ObservableCollection<OperacaoAtivoGroupingQueryModel> OperacoesAgrupadas
         {
             get => _operacoesAgrupadas;
             set => Set(() => OperacoesAgrupadas, ref _operacoesAgrupadas, value);
         }
 
-        private async void ExecuteGetOperacoesAgrupadasCommand()
+        private async void ExecuteGetOperacoesCommand()
         {
             _isGettingOperacoes = true;
 
             using (var httpClient = new HttpClient())
             {
-                var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:44362/api/operacoes/grouping");
+                var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:44362/api/operacoes/grouping/ativo");
 
                 HttpResponseMessage response = await httpClient.SendAsync(request);
 
@@ -46,9 +46,9 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
 
                 var settings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
 
-                var operacoes = JsonConvert.DeserializeObject<IEnumerable<OperacaoStandardGroupingQueryModel>>(stringContent, settings);
+                var operacoes = JsonConvert.DeserializeObject<IEnumerable<OperacaoAtivoGroupingQueryModel>>(stringContent, settings);
 
-                OperacoesAgrupadas = new ObservableCollection<OperacaoStandardGroupingQueryModel>(operacoes);
+                OperacoesAgrupadas = new ObservableCollection<OperacaoAtivoGroupingQueryModel>(operacoes);
             }
 
             _isGettingOperacoes = false;
@@ -56,6 +56,6 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
             Messenger.Default.Send(new NotificationMessage($"O agrupamento resultou em {OperacoesAgrupadas.Count} linhas."));
         }
 
-        private bool CanExecuteGetOperacoesAgrupadasCommand() => !_isGettingOperacoes;
+        private bool CanExecuteGetOperacoesCommand() => !_isGettingOperacoes;
     }
 }

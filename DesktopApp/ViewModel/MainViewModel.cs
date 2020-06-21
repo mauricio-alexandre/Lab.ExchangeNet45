@@ -13,7 +13,8 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
             TabItems = new INotifyPropertyChanged[]
             {
                 ServiceLocator.Current.GetInstance<OperacaoTodasViewModel>(),
-                ServiceLocator.Current.GetInstance<OperacaoAgrupamentoStandardViewModel>()
+                ServiceLocator.Current.GetInstance<OperacaoAgrupamentoStandardViewModel>(),
+                ServiceLocator.Current.GetInstance<OperacaoAgrupamentoAtivoViewModel>()
             };
         }
 
