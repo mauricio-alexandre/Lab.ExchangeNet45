@@ -50,21 +50,6 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
         {
             _isGettingOperacoes = true;
 
-            //using (var httpClient = new HttpClient())
-            //{
-            //    var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:44362/api/operacoes/grouping/ativo");
-
-            //    HttpResponseMessage response = await httpClient.SendAsync(request);
-
-            //    string stringContent = await response.Content.ReadAsStringAsync();
-
-            //    var settings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
-
-            //    var operacoes = JsonConvert.DeserializeObject<IEnumerable<OperacaoAtivoGroupingQueryModel>>(stringContent, settings);
-
-            //    OperacoesAgrupadas = new ObservableCollection<OperacaoAtivoGroupingQueryModel>(operacoes);
-            //}
-
             IEnumerable<OperacaoAtivoGroupingQueryModel> operacoes = await _exchangeService.Operacoes.GroupByAtivoAsync();
 
             OperacoesAgrupadas = new ObservableCollection<OperacaoAtivoGroupingQueryModel>(operacoes);
