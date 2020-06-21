@@ -25,6 +25,9 @@
                     <DataTemplate DataType="{x:Type vm:OperacaoAgrupamentoTipoViewModel}">
                         <local:OperacaoAgrupamentoTipoControl/>
                     </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:OperacaoAgrupamentoContaViewModel}">
+                        <local:OperacaoAgrupamentoContaControl/>
+                    </DataTemplate>
                 </TabControl.Resources>
             </TabControl>
         </StackPanel>

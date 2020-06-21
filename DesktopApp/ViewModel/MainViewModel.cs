@@ -15,7 +15,8 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
                 ServiceLocator.Current.GetInstance<OperacaoTodasViewModel>(),
                 ServiceLocator.Current.GetInstance<OperacaoAgrupamentoStandardViewModel>(),
                 ServiceLocator.Current.GetInstance<OperacaoAgrupamentoAtivoViewModel>(),
-                ServiceLocator.Current.GetInstance<OperacaoAgrupamentoTipoViewModel>()
+                ServiceLocator.Current.GetInstance<OperacaoAgrupamentoTipoViewModel>(),
+                ServiceLocator.Current.GetInstance<OperacaoAgrupamentoContaViewModel>()
             };
         }
 

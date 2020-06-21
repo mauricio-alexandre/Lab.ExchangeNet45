@@ -30,6 +30,7 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
             SimpleIoc.Default.Register<OperacaoAgrupamentoStandardViewModel>();
             SimpleIoc.Default.Register<OperacaoAgrupamentoAtivoViewModel>();
             SimpleIoc.Default.Register<OperacaoAgrupamentoTipoViewModel>();
+            SimpleIoc.Default.Register<OperacaoAgrupamentoContaViewModel>();
 
             Messenger.Default.Register<NotificationMessage>(this, NotifyUserMethod);
         }
@@ -43,6 +44,8 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
         public OperacaoAgrupamentoAtivoViewModel OperacaoAgrupamentoAtivo => ServiceLocator.Current.GetInstance<OperacaoAgrupamentoAtivoViewModel>();
 
         public OperacaoAgrupamentoTipoViewModel OperacaoAgrupamentoTipo => ServiceLocator.Current.GetInstance<OperacaoAgrupamentoTipoViewModel>();
+
+        public OperacaoAgrupamentoContaViewModel OperacaoAgrupamentoConta => ServiceLocator.Current.GetInstance<OperacaoAgrupamentoContaViewModel>();
 
         private static void NotifyUserMethod(NotificationMessage message)
         {
