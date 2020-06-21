@@ -87,12 +87,16 @@
     <Compile Include="OperacaoAgrupamentoStandardControl.xaml.cs">
       <DependentUpon>OperacaoAgrupamentoStandardControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OperacaoAgrupamentoTipoControl.xaml.cs">
+      <DependentUpon>OperacaoAgrupamentoTipoControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OperacaoTodasControl.xaml.cs">
       <DependentUpon>OperacaoTodasControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\OperacaoAgrupamentoAtivoViewModel.cs" />
     <Compile Include="ViewModel\OperacaoAgrupamentoStandardViewModel.cs" />
+    <Compile Include="ViewModel\OperacaoAgrupamentoTipoViewModel.cs" />
     <Compile Include="ViewModel\OperacaoTodasViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Page Include="OperacaoAgrupamentoAtivoControl.xaml">
@@ -115,6 +119,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="OperacaoAgrupamentoTipoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="OperacaoTodasControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
