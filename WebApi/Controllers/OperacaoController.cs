@@ -23,7 +23,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet, Route, CacheOutput(ServerTimeSpan = 300)]
+        [HttpGet, Route, CacheOutput(ServerTimeSpan = 180)]
         public async Task<IHttpActionResult> Get(CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoQueryModel> operacoes = await _mediator.Send(new GetOperacoesQuery(), cancellationToken);
@@ -32,7 +32,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
         [SwaggerProduces("text/csv")]
-        [HttpGet, Route("csv-file"), CacheOutput(ServerTimeSpan = 300)]
+        [HttpGet, Route("csv-file"), CacheOutput(ServerTimeSpan = 180)]
         public async Task<HttpResponseMessage> GetCsvFile(CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoQueryModel> operacoes = await _mediator.Send(new GetOperacoesQuery(), cancellationToken);
@@ -41,7 +41,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
         [SwaggerProduces("application/octet-stream")]
-        [HttpGet, Route("excel-file"), CacheOutput(ServerTimeSpan = 300)]
+        [HttpGet, Route("excel-file"), CacheOutput(ServerTimeSpan = 180)]
         public async Task<HttpResponseMessage> GetExcelFile(CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoQueryModel> operacoes = await _mediator.Send(new GetOperacoesQuery(), cancellationToken);
@@ -50,7 +50,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
 
-        [HttpGet, Route("grouping"), CacheOutput(ServerTimeSpan = 300)]
+        [HttpGet, Route("grouping"), CacheOutput(ServerTimeSpan = 180)]
         public async Task<IHttpActionResult> GroupByStandard(CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoStandardGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByStandardQuery(), cancellationToken);
@@ -59,7 +59,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
         [SwaggerProduces("text/csv")]
-        [HttpGet, Route("grouping/csv-file"), CacheOutput(ServerTimeSpan = 300)]
+        [HttpGet, Route("grouping/csv-file"), CacheOutput(ServerTimeSpan = 180)]
         public async Task<HttpResponseMessage> GetGroupByStandardCsvFile(CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoStandardGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByStandardQuery(), cancellationToken);
@@ -68,7 +68,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
         [SwaggerProduces("application/octet-stream")]
-        [HttpGet, Route("grouping/excel-file"), CacheOutput(ServerTimeSpan = 300)]
+        [HttpGet, Route("grouping/excel-file"), CacheOutput(ServerTimeSpan = 180)]
         public async Task<HttpResponseMessage> GetGroupByStandardExcelFile(CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoStandardGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByStandardQuery(), cancellationToken);
@@ -77,7 +77,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
 
-        [HttpGet, Route("grouping/ativo"), CacheOutput(ServerTimeSpan = 300)]
+        [HttpGet, Route("grouping/ativo"), CacheOutput(ServerTimeSpan = 180)]
         public async Task<IHttpActionResult> GroupByAtivo(CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoAtivoGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByAtivoQuery(), cancellationToken);
@@ -86,7 +86,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
         [SwaggerProduces("text/csv")]
-        [HttpGet, Route("grouping/ativo/csv-file"), CacheOutput(ServerTimeSpan = 300)]
+        [HttpGet, Route("grouping/ativo/csv-file"), CacheOutput(ServerTimeSpan = 180)]
         public async Task<HttpResponseMessage> GetGroupByAtivoCsvFile(CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoAtivoGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByAtivoQuery(), cancellationToken);
@@ -95,7 +95,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
         [SwaggerProduces("application/octet-stream")]
-        [HttpGet, Route("grouping/ativo/excel-file"), CacheOutput(ServerTimeSpan = 300)]
+        [HttpGet, Route("grouping/ativo/excel-file"), CacheOutput(ServerTimeSpan = 180)]
         public async Task<HttpResponseMessage> GetGroupByAtivoExcelFile(CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoAtivoGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByAtivoQuery(), cancellationToken);
@@ -104,7 +104,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
 
-        [HttpGet, Route("grouping/tipo"), CacheOutput(ServerTimeSpan = 300)]
+        [HttpGet, Route("grouping/tipo"), CacheOutput(ServerTimeSpan = 180)]
         public async Task<IHttpActionResult> GroupByTipo(CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoTipoGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByTipoQuery(), cancellationToken);
@@ -113,7 +113,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
         [SwaggerProduces("text/csv")]
-        [HttpGet, Route("grouping/tipo/csv-file"), CacheOutput(ServerTimeSpan = 300)]
+        [HttpGet, Route("grouping/tipo/csv-file"), CacheOutput(ServerTimeSpan = 180)]
         public async Task<HttpResponseMessage> GetGroupByTipoCsvFile(CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoTipoGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByTipoQuery(), cancellationToken);
@@ -122,7 +122,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
         [SwaggerProduces("application/octet-stream")]
-        [HttpGet, Route("grouping/tipo/excel-file"), CacheOutput(ServerTimeSpan = 300)]
+        [HttpGet, Route("grouping/tipo/excel-file"), CacheOutput(ServerTimeSpan = 180)]
         public async Task<HttpResponseMessage> GetGroupByTipoExcelFile(CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoTipoGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByTipoQuery(), cancellationToken);
@@ -131,7 +131,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
 
-        [HttpGet, Route("grouping/conta"), CacheOutput(ServerTimeSpan = 300)]
+        [HttpGet, Route("grouping/conta"), CacheOutput(ServerTimeSpan = 180)]
         public async Task<IHttpActionResult> GroupByConta(CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoContaGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByContaQuery(), cancellationToken);
@@ -140,7 +140,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
         [SwaggerProduces("text/csv")]
-        [HttpGet, Route("grouping/conta/csv-file"), CacheOutput(ServerTimeSpan = 300)]
+        [HttpGet, Route("grouping/conta/csv-file"), CacheOutput(ServerTimeSpan = 180)]
         public async Task<HttpResponseMessage> GetGroupByContaCsvFile(CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoContaGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByContaQuery(), cancellationToken);
@@ -149,7 +149,7 @@ namespace Lab.ExchangeNet45.WebApi.Controllers
         }
 
         [SwaggerProduces("application/octet-stream")]
-        [HttpGet, Route("grouping/conta/excel-file"), CacheOutput(ServerTimeSpan = 300)]
+        [HttpGet, Route("grouping/conta/excel-file"), CacheOutput(ServerTimeSpan = 180)]
         public async Task<HttpResponseMessage> GetGroupByContaExcelFile(CancellationToken cancellationToken)
         {
             IEnumerable<OperacaoContaGroupingQueryModel> grouping = await _mediator.Send(new GroupOperacoesByContaQuery(), cancellationToken);
