@@ -26,9 +26,9 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
 
             Title = "Todas";
 
-            GetOperacoesCommand = new RelayCommand(ExecuteGetOperacoesCommand, CanExecuteGetOperacoesCommand);
-            DownloadOperacoesCsvCommand = new RelayCommand(ExecuteDownloadCsv, CanExecuteDownloadCsv);
-            DownloadOperacoesExcelCommand = new RelayCommand(ExecuteDownloadExcel, CanExecuteDownloadExcel);
+            GetOperacoesCommand = new RelayCommand(ExecuteGetOperacoesCommand, () => !_isGettingOperacoes);
+            DownloadOperacoesCsvCommand = new RelayCommand(ExecuteDownloadCsv, () => !_isDownloadingCsv);
+            DownloadOperacoesExcelCommand = new RelayCommand(ExecuteDownloadExcel, () => !_isDownloadingExcel);
         }
 
         public string Title { get; }
@@ -39,7 +39,6 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
 
         public ICommand DownloadOperacoesExcelCommand { get; }
 
-
         public ObservableCollection<OperacaoQueryModel> Operacoes
         {
             get => _operacoes;
@@ -48,49 +47,56 @@ namespace Lab.ExchangeNet45.DesktopApp.ViewModel
 
         private async void ExecuteGetOperacoesCommand()
         {
-            _isGettingOperacoes = true;
+            try
+            {
+                _isGettingOperacoes = true;
 
-            IEnumerable<OperacaoQueryModel> operacoes = await _exchangeService.Operacoes.GetAsync();
+                IEnumerable<OperacaoQueryModel> operacoes = await _exchangeService.Operacoes.GetAsync();
 
-            Operacoes = new ObservableCollection<OperacaoQueryModel>(operacoes);
+                Operacoes = new ObservableCollection<OperacaoQueryModel>(operacoes);
 
-            _isGettingOperacoes = false;
-
-            MessageBox.Show($"{Operacoes.Count} operações encontradas.");
+                MessageBox.Show($"{Operacoes.Count} operações encontradas.");
+            }
+            finally
+            {
+                _isGettingOperacoes = false;
+            }
         }
-
-        private bool CanExecuteGetOperacoesCommand() => !_isGettingOperacoes;
-
 
         private async void ExecuteDownloadCsv()
         {
-            _isDownloadingCsv = true;
+            try
+            {
+                _isDownloadingCsv = true;
 
-            byte[] byteArrayContent = await _exchangeService.Operacoes.DownloadAsCsvFileAsync();
+                byte[] byteArrayContent = await _exchangeService.Operacoes.DownloadAsCsvFileAsync();
 
-            var dialog = new SaveFileDialog { Title = "Salvar Operações", Filter = "CSV Files (*.csv)|*.csv", DefaultExt = ".csv" };
+                var dialog = new SaveFileDialog {Title = "Salvar Operações", Filter = "CSV Files (*.csv)|*.csv", DefaultExt = ".csv"};
 
-            if (dialog.ShowDialog() == true) File.WriteAllBytes(dialog.FileName, byteArrayContent);
-
-            _isDownloadingCsv = false;
+                if (dialog.ShowDialog() == true) File.WriteAllBytes(dialog.FileName, byteArrayContent);
+            }
+            finally
+            {
+                _isDownloadingCsv = false;
+            }
         }
-
-        private bool CanExecuteDownloadCsv() => !_isDownloadingCsv;
-
 
         private async void ExecuteDownloadExcel()
         {
-            _isDownloadingExcel = true;
+            try
+            {
+                _isDownloadingExcel = true;
 
-            byte[] byteArrayContent = await _exchangeService.Operacoes.DownloadAsExcelFileAsync();
+                byte[] byteArrayContent = await _exchangeService.Operacoes.DownloadAsExcelFileAsync();
 
-            var dialog = new SaveFileDialog { Title = "Salvar Operações", Filter = "Excel Files (*.xlsx)|*.xlsx", DefaultExt = ".xlsx" };
+                var dialog = new SaveFileDialog {Title = "Salvar Operações", Filter = "Excel Files (*.xlsx)|*.xlsx", DefaultExt = ".xlsx"};
 
-            if (dialog.ShowDialog() == true) File.WriteAllBytes(dialog.FileName, byteArrayContent);
-
-            _isDownloadingExcel = false;
+                if (dialog.ShowDialog() == true) File.WriteAllBytes(dialog.FileName, byteArrayContent);
+            }
+            finally
+            {
+                _isDownloadingExcel = false;
+            }
         }
-
-        private bool CanExecuteDownloadExcel() => !_isDownloadingExcel;
     }
 }

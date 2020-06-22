@@ -21,7 +21,6 @@ namespace Lab.ExchangeNet45.Application.Bootstrapping
             container.RegisterRepositories(applicationAssembly);
 
             // Adds pipeline behaviors to MediatR
-            //container.Collection.Append(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehavior<,>));
             container.Collection.Append(typeof(IPipelineBehavior<,>), typeof(TransactionPipelineBehavior<,>));
         }
 

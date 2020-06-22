@@ -80,7 +80,6 @@
     <Compile Include="Operacao\QuerySide\GroupOperacoesByStandardQueryHandler.cs" />
     <Compile Include="Operacao\QuerySide\GroupOperacoesByTipoQueryHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Shared\LoggingPipelineBehavior.cs" />
     <Compile Include="Shared\NHibernateSessionFactoryFactory.cs" />
     <Compile Include="Shared\TransactionPipelineBehavior.cs" />
   </ItemGroup>
