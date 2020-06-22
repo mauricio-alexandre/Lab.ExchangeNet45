@@ -41,3 +41,16 @@ E dado que há também outros caminhos que chegam no mesmo objetivo, o raciocín
 
 
 
+## Persistência
+
+A persistência configurada no project *Application* utiliza o NHibernate com o SQLite.
+
+Na primeira execução, um arquivo SQLite será automaticamente criado com toda a estrutura necessária no diretório *%USERPROFILE%\AppData\Local\Temp* com o nome *Lab.ExchangeNet45.sqlite*. Veja detalhes na classe `NHibernateSessionFactoryFactory.cs`.
+
+
+
+## Cache Web API
+
+O cache utilizado é um cache simples 3rd party com duração de 3 minutos in-memory. A vantagem dele é que o resultado do *Action* já é engregue imediatamente a nível de ActionFilter. A desvantagem é que o resultado fica "desatualizado" durante 3 minutos em relação a alguma modificação que possivelmente poderia acontecer em alguns dos registros.
+
+Outra abordagem que poderia ter sido utilizada seria o Second Level Cache, que é um cache a nível de persistência. A vantagem dele é a possibilidade de invalidar uma entrada de cache quando um determinado registro é alterado. A desvantagem seria apenas o tempo de hydrate/dehydrate e serialize/deserialize.
