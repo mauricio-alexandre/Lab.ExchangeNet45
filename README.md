@@ -11,6 +11,8 @@
 
 Dado que o solution está carregado e que todos os NuGet packages foram restored:
 
+- *(Opcional)* Achando necessário rodar um teste antes, há um teste NUnit que testa a persistência em *Lab.ExchangeNet45.Application.Tests*, ele cria um arquivo temporário do SQLite e um registro apenas para validar o funcionamento da persistência.
+
 - Faça com que o solution execute múltiplos projetos:
   - Ir em properties do solution, no menu que abrir, no lado esquerdo opção "Common Properties > Startup Project".
   - Marcar "Multiple startup projects" em *Lab.ExchangeNet45.WebApi*, *Lab.ExchangeNet45.OperacaoLoader* e *Lab.ExchangeNet45.DesktopApp*.
@@ -53,4 +55,4 @@ Na primeira execução, um arquivo SQLite será automaticamente criado com toda 
 
 O cache utilizado é um cache simples 3rd party com duração de 3 minutos in-memory. A vantagem dele é que o resultado do *Action* já é engregue imediatamente a nível de ActionFilter. A desvantagem é que o resultado fica "desatualizado" durante 3 minutos em relação a alguma modificação que possivelmente poderia acontecer em alguns dos registros.
 
-Outra abordagem que poderia ter sido utilizada seria o Second Level Cache, que é um cache a nível de persistência. A vantagem dele é a possibilidade de invalidar uma entrada de cache quando um determinado registro é alterado. A desvantagem seria apenas o tempo de hydrate/dehydrate e serialize/deserialize.
+> Outra abordagem que poderia ter sido utilizada seria o Second Level Cache, que é um cache a nível de persistência. A vantagem dele é a possibilidade de invalidar uma entrada de cache quando um determinado registro é alterado. A desvantagem seria apenas o tempo de hydrate/dehydrate e serialize/deserialize.
